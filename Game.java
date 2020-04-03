@@ -1,5 +1,12 @@
 
+/**
+ * Game class represent a game
+ * it holds an Two-dimensional array 
+ * @author sevda imany
+ * @version 0.0
+ */
 public class Game {
+    // it holds 1 for black -1 for white and 0 for empty blocks
     int[][] twoD_arr;
 
     public Game() {
@@ -15,11 +22,23 @@ public class Game {
 
     }
 
+    
+    /** 
+     * get the Two-dimensional arr 
+     * @return int[][]
+     */
     public int[][] getTwoD_arr() {
         return twoD_arr;
     }
 
-    // turn 1 for black and -1 for white
+    
+    /** 
+     * this method play game
+     * @param x coordinate of  map
+     * @param y coordinate of map
+     * @param turn 1 for black and -1 for white
+     * @return {@code true} is play game successfuly otherwise false 
+     */
     public boolean game(int c, int l, int turn) {
         GameMap map = new GameMap();
         if (twoD_arr[c][l] == 0) {
@@ -80,6 +99,12 @@ public class Game {
         return false;
     }
 
+    
+    /** 
+     * this method check if player has at least one block to play or not
+     * @param player
+     * @return {@code true} if player has any choice otherwise {@code false}
+     */
     public boolean pass(int player) {
         GameMap map = new GameMap();
         int other;
@@ -137,6 +162,12 @@ public class Game {
         return true;
     }
 
+    
+    /** 
+     * this method count how many white or black is in map
+     * @param number 1 for black and -1 for white
+     * @return the number of white or black in map
+     */
     public int num(int number) {
         int num = 0;
         for (int i = 0; i < 8; i++) {
@@ -147,7 +178,9 @@ public class Game {
         }
         return num;
     }
-
+/**
+ * this method check if white or black won the game and print it
+ */
     public void endGame() {
         if (num(1) > num(-1))
             System.out.println("Black won!");
@@ -158,6 +191,9 @@ public class Game {
 
     }
 
+    /**
+     * this method print score of each player
+     */
     public void print() {
         int numBlack = num(1);
         int numWhite = num(-1);

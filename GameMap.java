@@ -1,7 +1,17 @@
 import java.util.ArrayList;
 
+/**
+ * GameMap class represent a map in game
+ * @author sevda imany
+ * @version 0.0
+ */
 public class GameMap{
 
+    
+    /** 
+     * this method print a map 
+     * @param twoD_arr
+     */
     public void printMap(int[][] twoD_arr) {
         ArrayList<String> sample = new ArrayList<String>();
         sample.add(0, "_____ ");
@@ -55,17 +65,39 @@ public class GameMap{
         }
 
     }
-
-    public boolean select(Player player, Game game) {
-        Point point = player.choose();
-       if(check(point) && check(point, player, game))
+    
+    
+    /** 
+     * @param player
+     * @param game
+     * @return boolean
+     */
+    public boolean select(Object player, Game game) {
+         if(player instanceof Ai){
+            Ai newAi = (Ai)player;
+            Point point = newAi.choose2(game);
+            if(check(point, newAi, game))
+            return true;
+        }
+        else if(player instanceof Player){ 
+            Player newPlayer = (Player)player;
+        Point point = newPlayer.choose();
+       if(check(point) && check(point,newPlayer, game))
        return true;
        else{ 
-      
        return false;
        }
     }
+    return true;
+    }
+    
 
+    
+    /** 
+     * this method check if the given point is in the map or not
+     * @param point
+     * @return {@code true} if the point is in map otherwise {@code false}
+     */
     public boolean check(Point point) {
         if (point.getX() >= 0 && point.getX() < 8 && point.getY() >= 0 && point.getY() < 8)
             return true;
@@ -73,7 +105,15 @@ public class GameMap{
             return false;
     }
 
-    public boolean check(Point point, Player player, Game game) {
+    
+    /** 
+     * this method check if can play with given point or not
+     * @param point
+     * @param player
+     * @param game
+     * @return {@code tr}
+     */
+    private boolean check(Point point, Player player, Game game) {
         return game.game(point.getX(), point.getY(), player.getPlayer());
 
     }

@@ -1,17 +1,36 @@
 import java.util.Scanner;
-
+/**
+ * Player class represent a player in game
+ * @author sevda imany
+ * @version 0.0
+ */
 public class Player {
-
+    //1 for black and -1 for white
     private int player;
 
+    
+    /** 
+     * get player
+     * @return 1 for black and -1 for white
+     */
     public int getPlayer() {
         return player;
     }
 
+    
+    /** 
+     * set player
+     * @param player
+     */
     public void setPlayer(int player) {
         this.player = player;
     }
 
+    
+    /** 
+     * this method ask user to choose a block in table
+     * @return coordinate of a block
+     */
     public Point choose() {
         if (player == 1)
             System.out.println("Black turn:");
