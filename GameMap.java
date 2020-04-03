@@ -1,0 +1,86 @@
+import java.util.ArrayList;
+
+public class GameMap{
+
+    public void printMap(int[][] twoD_arr) {
+        ArrayList<String> sample = new ArrayList<String>();
+        sample.add(0, "_____ ");
+        sample.add(1, "_____|");
+        sample.add(2, "  b  |");
+        sample.add(3, "  w  |");
+        sample.add(4, "     |");
+
+        int n = -1;
+
+        System.out.println("\t\t\t\t\t\t\t\t\t\t     A     B     C     D     E     F     G     H");
+
+        for (int j = 0; j < 8; j++) {
+            if (j == 0)
+                System.out.print("\t\t\t\t\t\t\t\t\t\t   " + sample.get(0));
+            else
+                System.out.print(sample.get(0));
+        }
+        System.out.print("\n");
+
+        for (int i = 1; i < 25; i++) {
+            if (i % 3 == 2)
+                n++;
+
+            for (int j = 0; j < 8; j++) {
+
+                if (j == 0) {
+                    if (i % 3 == 2)
+                        System.out.print("\t\t\t\t\t\t\t\t\t\t" + (n + 1) + " |");
+                    else
+                        System.out.print("\t\t\t\t\t\t\t\t\t\t" + "  |");
+
+                }
+
+                if (i % 3 == 1) {
+                    System.out.print(sample.get(4));
+                } else if (i % 3 == 0) {
+                    System.out.print(sample.get(1));
+                } else if (i % 3 == 2) {
+                    if (twoD_arr[n][j] == 0) {
+                        System.out.print(sample.get(4));
+                    } else if (twoD_arr[n][j] == 1) {
+                        System.out.print(sample.get(2));
+                    } else if (twoD_arr[n][j] == -1) {
+                        System.out.print(sample.get(3));
+                    }
+                }
+
+            }
+            System.out.print("\n");
+        }
+
+    }
+
+    public boolean select(Player player, Game game) {
+        Point point = player.choose();
+       if(check(point) && check(point, player, game))
+       return true;
+       else{ 
+      
+       return false;
+       }
+    }
+
+    public boolean check(Point point) {
+        if (point.getX() >= 0 && point.getX() < 8 && point.getY() >= 0 && point.getY() < 8)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean check(Point point, Player player, Game game) {
+        return game.game(point.getX(), point.getY(), player.getPlayer());
+
+    }
+    
+    public void menu(){
+        System.out.println("1)Play with friend\n2)Play online");
+    }
+
+   
+}
