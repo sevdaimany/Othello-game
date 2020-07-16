@@ -68,9 +68,10 @@ public class GameMap{
     
     
     /** 
+     * this method get a player and play game by checking the input is the right one
      * @param player
      * @param game
-     * @return boolean
+     * @return {@code true} if the input is right otherwise {@code false}  
      */
     public boolean select(Object player, Game game) {
          if(player instanceof Ai){
@@ -119,7 +120,7 @@ public class GameMap{
     }
     
     public void menu(){
-        System.out.println("1)Play with friend\n2)Play online");
+        System.out.println("1)Play with friend\n2)Play with Ai");
     }
 
    

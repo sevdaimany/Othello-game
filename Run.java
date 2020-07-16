@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 /**
- * Project class represent an othelo game
+ * Run class represent an othello game
  * 
  * @author sevda imany
  * @version 0.0
  */
-public class Project {
+public class Run {
 
     public static void clearScreen() {
         System.out.print("\033[H\033[2J");
@@ -108,5 +108,6 @@ public class Project {
             }
         }
     }
+    
 
 }
